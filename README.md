@@ -1,4 +1,4 @@
-# Revit Web App boilerplate
+# Revit Web App Boilerplate
 Boilerplate .NET solution for Revit Web Apps. Built using Revit Plugin wizard for Revit 2022.
 
 ## Requirements
@@ -50,3 +50,14 @@ rem echo %outpath% (for checking)
 3. Change the contents of `ui` to your built web app. The contents of this will be hidden in your assembly to prevent tampering.
 
 4. Instead of loading the ui from a local file, you may replace `WebViewer.LaunchWeb.cs:88` with a url of your development server, to allow faster development (just refresh to show changes to the ui). For this example, we just run a simple http python server from the `ui` folder by using the command `python -m http.server`. 
+
+
+# How it works
+1. Revit opens up a WebView2 window
+2. We send a message to WebView2 from the web application ( [index.js:12](https://github.com/boblyx/blr-revitwebapp/blob/a73f9236696bc764e67b8d22bef41f61b03e69d1/RevitWebApp/ui/index.js#L12) ) using:
+```js
+const payload = {"action": "Test", "payload": {"msg": "my msg"}};
+w.chrome?.webview?.postMessage(payload);
+```
+3. This payload can then be deserialized on the addin side via [WebWindow.xaml.cs:49](https://github.com/boblyx/blr-revitwebapp/blob/a73f9236696bc764e67b8d22bef41f61b03e69d1/RevitWebApp/WebViewer/WebWindow.xaml.cs#L49).
+4. And used to call various Revit functions using Revit's [UIApplication](https://www.revitapidocs.com/2017/51ca80e2-3e5f-7dd2-9d95-f210950c72ae.htm) instance via [RevitEventHandler.cs:44](https://github.com/boblyx/blr-revitwebapp/blob/a73f9236696bc764e67b8d22bef41f61b03e69d1/RevitWebApp/RevitEventHandler.cs#L44).
