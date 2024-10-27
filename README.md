@@ -49,7 +49,8 @@ rem echo %outpath% (for checking)
 
 3. Change the contents of `ui` to your built web app. The contents of this will be hidden in your assembly to prevent tampering.
 
-4. Instead of loading the ui from a local file, you may replace `WebViewer.LaunchWeb.cs:88` with a url of your development server, to allow faster development (just refresh to show changes to the ui). For this example, we just run a simple http python server from the `ui` folder by using the command `python -m http.server`. 
+4. Instead of loading the ui from a local file, you may replace [WebViewer.LaunchWeb.cs:88](https://github.com/boblyx/blr-revitwebapp/blob/e3d92b71df4b5bf2d954b0c99d0fd997838bad03/RevitWebApp/WebViewer/LaunchWeb.cs#L88) with a url of your development server, to allow faster development (just refresh to show changes to the ui). 
+- For example, we may run a simple http python server from the `ui` folder by using the command `python -m http.server 5173` and our url on WebViewer.LaunchWeb will be `http://localhost:5173`.
 
 
 # How it works
