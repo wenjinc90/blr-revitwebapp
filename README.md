@@ -1,6 +1,23 @@
 # Revit Web App boilerplate
 Boilerplate .NET solution for Revit Web Apps. Built using Revit Plugin wizard for Revit 2022.
 
+## Requirements
+- Visual Studio Express 2017 or later
+
+## Dependencies
+- Microsoft.Web.WebView2 < v1.0.1938.49
+- Newtonsoft.Json
+- System.Text.Json
+
+## References
+- PresentationCore
+- PresentationFramework
+- System.Drawing
+- System.Xaml
+- RevitAPI
+- RevitAPIUI
+
+
 ## Important
 1. Change your `.addin` to your solution name, ensuring that it refers to the DLL like `<solution_name>/<solution_name>.dll`
 
